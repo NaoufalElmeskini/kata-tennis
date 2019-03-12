@@ -10,7 +10,7 @@ public class TennisMatch {
 	@Getter @Setter private Player player0;
 	@Getter @Setter private Player player1;
 	@Getter @Setter private LinkedList <TennisSet> matchSets;
-	@Getter @Setter private boolean isFinished;
+	@Getter @Setter private boolean isFinished;	// Indicates if the match is finished or still on
 	
 	
 	
@@ -45,6 +45,7 @@ public class TennisMatch {
 
 	public void start() {
 		while( !this.isFinished ){
+			// Display the last set score (if there is one)
 			if(matchSets.size() >0){
 				TennisSet lastSet = matchSets.getLast();
 				System.out.println( lastSet.setScoreToString() );
@@ -52,7 +53,8 @@ public class TennisMatch {
 				System.out.println("======================");
 			}
 			
-			int rand = (int) Math.round(Math.random()); // returns 0 or 1
+			// rand contains 0 or 1
+			int rand = (int) Math.round(Math.random()); 
 			if (rand == 0){
 				marquerPoint(player0);
 			}else{

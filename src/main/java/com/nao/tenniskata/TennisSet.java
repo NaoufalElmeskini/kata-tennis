@@ -19,8 +19,8 @@ public class TennisSet {
 	@Getter private SimpleEntry<Player, Integer>[] setScore;	//Getter only, only marquerPoint() methods can modify this member
 	@Getter private SimpleEntry<Player, GamePoint>[] gameScore;	//Getter only, only marquerPoint() methods can modify this member
 	
-	@Getter private boolean isFinished;
-	@Getter private Player setWinner;
+	@Getter private boolean isFinished;	// Indicates if the set is finished or still on
+	@Getter private Player setWinner; // The winner of this set. He is only determined at the end of the set.
 	final static private Logger log = LogManager.getLogger(TennisSet.class);
 	
 	
@@ -113,7 +113,10 @@ public class TennisSet {
 		}
 	}
 	
-	
+	/**
+	 * Transforms the game score to a readable String
+	 * @return
+	 */
 	public String gameScoreToString(){
 		if(player0 == null || player1 == null){
 			log.error("one of the players is null, score can't be displayed.");
@@ -129,6 +132,10 @@ public class TennisSet {
 		return sb.toString();
 	}
 	
+	/**
+	 * Transforms the set score to a readable String
+	 * @return
+	 */
 	public String setScoreToString(){
 		if(player0 == null || player1 == null){
 			log.error("one of the players is null, score can't be displayed.");
