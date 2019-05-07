@@ -1,12 +1,15 @@
 package com.nao.tenniskata;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Getter @Setter
+@NoArgsConstructor
 public class Player {
-	@Getter @Setter	private Long id;
-	@Getter @Setter private String firstName;
-	@Getter @Setter private String lastName;
+	private Long id;
+	private String firstName;
+	private String lastName;
 	
 	public Player(Long id, String firstName, String lastName) {
 		super();
@@ -15,7 +18,6 @@ public class Player {
 		this.lastName = lastName;
 	}
 
-	public Player() {}
 
 	@Override
 	public String toString() {

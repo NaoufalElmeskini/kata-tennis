@@ -8,19 +8,20 @@ import org.apache.logging.log4j.Logger;
 import lombok.Getter;
 import lombok.Setter;
 
-
+@Getter
 public class TennisSet {
-	@Getter @Setter private Long id;
-	@Getter @Setter private int setNumber;
+	@Setter private Long id;
+	@Setter private int setNumber;
 	
-	@Getter @Setter private Player player0;
-	@Getter @Setter private Player player1;
+	@Setter private Player player0;
+	@Setter private Player player1;
 	
-	@Getter private SimpleEntry<Player, Integer>[] setScore;	//Getter only, only marquerPoint() methods can modify this member
-	@Getter private SimpleEntry<Player, GamePoint>[] gameScore;	//Getter only, only marquerPoint() methods can modify this member
+	private SimpleEntry<Player, Integer>[] setScore;	//Getter only, only marquerPoint() methods can modify this member
+	private SimpleEntry<Player, GamePoint>[] gameScore;	//Getter only, only marquerPoint() methods can modify this member
 	
-	@Getter private boolean isFinished;	// Indicates if the set is finished or still on
-	@Getter private Player setWinner; // The winner of this set. He is only determined at the end of the set.
+	private boolean isFinished;	// Indicates if the set is finished or still on
+	private Player setWinner; // The winner of this set. He is only determined at the end of the set.
+	
 	final static private Logger log = LogManager.getLogger(TennisSet.class);
 	
 	
@@ -75,7 +76,7 @@ public class TennisSet {
 		GamePoint newGameScore = oldGameScore.getNextPoint();
 		gameScore[ playerIndex ].setValue( newGameScore );
 		
-		if(newGameScore.equals(GamePoint.GAME)){
+		if(newGameScore.equals( GamePoint.GAME )){
 			int newSetScore = setScore[playerIndex].getValue() +1; 
 			setScore[ playerIndex ].setValue( newSetScore );// Increment set score
 			reinitializeGameScore();

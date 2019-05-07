@@ -8,7 +8,6 @@ public class Main {
 		
 		TennisMatch match = new TennisMatch(1, _Djoko, _Federer);
 		match.start();
-
 	}
 
 }

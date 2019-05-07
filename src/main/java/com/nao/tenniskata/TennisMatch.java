@@ -5,12 +5,13 @@ import java.util.LinkedList;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter @Setter
 public class TennisMatch {
-	@Getter @Setter private Long id;
-	@Getter @Setter private Player player0;
-	@Getter @Setter private Player player1;
-	@Getter @Setter private LinkedList <TennisSet> matchSets;
-	@Getter @Setter private boolean isFinished;	// Indicates if the match is finished or still on
+	private Long id;
+	private Player player0;
+	private Player player1;
+	private LinkedList <TennisSet> matchSets;
+	private boolean isFinished;	// Indicates if the match is finished or still on
 	
 	
 	
@@ -35,9 +36,10 @@ public class TennisMatch {
 			TennisSet set = new TennisSet( matchSets.size() +1, player0, player1 );
 			this.matchSets.add(set);
 		}
+		
 		TennisSet lastSet = matchSets.getLast();
 		lastSet.marquerPoint(player);
-		if(lastSet.getSetNumber() == 5 && lastSet.isFinished()){ // A match of 5 sets
+		if(lastSet.getSetNumber() == 5 && lastSet.isFinished()){ // End of Set 5 = End of match
 			this.isFinished = true;
 		}
 	}
@@ -52,8 +54,8 @@ public class TennisMatch {
 				System.out.println( lastSet.gameScoreToString() );
 				System.out.println("======================");
 			}
+
 			
-			// rand contains 0 or 1
 			int rand = (int) Math.round(Math.random()); 
 			if (rand == 0){
 				marquerPoint(player0);
